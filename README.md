@@ -51,7 +51,8 @@
 * [Docker Desktop](https://www.docker.com/products/docker-desktop) After installation on Windows, it is required to enable `"Virtualization"` on the BIOS of the computer.
 * [Rhino 6/7 & Grasshopper](https://www.rhino3d.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/): Any python editor works, but we recommend VS Code and extensions, [see the documentation](https://gramaziokohler.github.io/compas_fab/latest/getting_started.html#working-in-visual-studio-code)
-
+* [ABB RobotStudio](https://new.abb.com/products/robotics/robotstudio) (only available on Windows, trial version available):
+Once installed, go to the `Add-in` tab, and install the latest version available of `RobotWare for IRC5 controllers`.
 
 ## Installation
 
