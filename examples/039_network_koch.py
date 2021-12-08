@@ -14,11 +14,11 @@ v = Vector(1, 0, 0)
 
 
 def draw(network, point, vector, s, step, last_node=None):
-    for i, c in enumerate(s):
+    for c in s:
         if c == 'A':
             point = point + vector * step
             a = network.add_node(x=point.x, y=point.y, z=point.z)
-            if last_node:
+            if last_node != None:
                 network.add_edge(last_node, a)
             last_node = a
         elif c == '-':
