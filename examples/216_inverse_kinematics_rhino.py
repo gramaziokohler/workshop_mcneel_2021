@@ -1,26 +1,19 @@
 from compas.artists import Artist
 from compas.geometry import Frame
-from compas.robots import LocalPackageMeshLoader
-from compas.robots import RobotModel
+from compas_fab.robots.ur5 import Robot
+from compas_fab.backends.kinematics import AnalyticalInverseKinematics
 
-from ur_kinematics import inverse_kinematics_ur5
-
-loader = LocalPackageMeshLoader('models', 'ur_description')
-model = RobotModel.from_urdf_file(loader.load_urdf('ur5.urdf'))
-model.load_geometry(loader)
+robot = Robot()
+kin = AnalyticalInverseKinematics(solver="ur5")
 
 f = Frame((0.417, 0.191, -0.005), (-0.000, 1.000, 0.000), (1.000, 0.000, 0.000))
-f.point /= 0.001
 
-sols = inverse_kinematics_ur5(f)
+artist = Artist(robot.model, layer='IK')
 
-artist = Artist(model, layer='IK')
-
-for joint_values in sols:
-    config = model.zero_configuration()
-    config.joint_values = joint_values
+for jv, _ in kin.inverse_kinematics(robot, f):
+    config = robot.model.zero_configuration()
+    config.joint_values = jv
     artist.update(config)
-    
     artist.draw_visual()
     artist.redraw(1)
     artist.clear_layer()
