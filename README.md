@@ -6,7 +6,7 @@
 
 ![Flyer](images/spatial_robotic_assembly.jpg)
 
-👉 [Slides](TODO) | [Overview](#overview) | [Examples](#examples) | [Requirements](#requirements) | [Installation](#installation)
+👉 [Slides](https://docs.google.com/presentation/d/1XioagUYqCVWCgxudyw0m4pQa-cu9_5Pf7duuSE7PYMo) | [Overview](#overview) | [Examples](#examples) | [Requirements](#requirements) | [Installation](#installation)
 
 ## Overview
 
