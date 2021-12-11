@@ -1,6 +1,4 @@
-from compas_rhino.artists import BoxArtist
-from compas_rhino.artists import CylinderArtist
-from compas_rhino.artists import SphereArtist
+from compas.artists import Artist
 
 from compas.geometry import Box
 from compas.geometry import Circle
@@ -26,11 +24,11 @@ c1 = Cylinder(circle, height=4)
 print(c1)
 
 # Draw!
-artist = BoxArtist(b1, layer='shapes')
+artist = Artist(b1, layer='shapes')
 artist.draw()
 
-artist = SphereArtist(s1, layer='shapes')
+artist = Artist(s1, layer='shapes')
 artist.draw()
 
-artist = CylinderArtist(c1, layer='shapes')
+artist = Artist(c1, layer='shapes')
 artist.draw()

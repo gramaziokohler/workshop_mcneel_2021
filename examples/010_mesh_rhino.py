@@ -1,9 +1,8 @@
-# Rhino
 import compas
+from compas.artists import Artist
 from compas.datastructures import Mesh
-from compas_rhino.artists import MeshArtist
 
 mesh = Mesh.from_obj(compas.get('hypar.obj'))
 
-artist = MeshArtist(mesh)
-artist.draw_mesh()
+artist = Artist(mesh)
+a = artist.draw_mesh()
