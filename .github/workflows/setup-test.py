@@ -1,2 +1,2 @@
-import matplotlib
-matplotlib.pyplot.ion()
+from matplotlib import pyplot as plt
+plt.ion()
