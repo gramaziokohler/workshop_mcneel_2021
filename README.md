@@ -67,7 +67,6 @@ Make sure you run this at least once:
 
 </p>
 </details>
-</br/>
 
     (base) conda env create -f https://dfab.link/mcneel-2021.yml
 
