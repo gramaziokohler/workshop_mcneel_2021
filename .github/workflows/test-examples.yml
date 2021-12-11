@@ -1,0 +1,44 @@
+name: Test examples
+
+on:
+  push:
+    branches:
+      - main
+
+defaults:
+  run:
+    shell: bash -l {0}
+
+jobs:
+  test-install:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest"
+          activate-environment: fab21
+          channels: conda-forge
+          python-version: 3.8
+
+      - name: install
+        run: |
+          conda env create -f https://dfab.link/mcneel-2021.yml
+    #   - name: install python.app (mac)
+    #     if: matrix.os == 'macos-latest'
+    #     run: |
+    #       conda install python.app --yes
+      - name: Verify imports
+        run: |
+          python -c "import compas; print(compas.__version__)"
+          python -c "import compas_fab; print(compas_fab.__version__)"
+          python -c "import compas_rrc; print(compas_rrc.__version__)"
+          python -m compas
+      - name: Test code samples
+        run: |
+          python examples/001_primitives.py
+          cat .github/workflows/setup-test.py examples/014_mesh_plotter.py | python
