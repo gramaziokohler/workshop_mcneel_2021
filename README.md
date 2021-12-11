@@ -58,32 +58,28 @@ Once installed, go to the `Add-in` tab, and install the latest version available
 
 We use `conda` to make sure we have clean, isolated environment for dependencies.
 
-First time using `conda`? Make sure you run this at least once:
+<details><summary>First time using `conda`?</summary>
+<p>
+
+Make sure you run this at least once:
 
     (base) conda config --add channels conda-forge
 
-Clone this repository and create a new conda environment:
-
-    (base) cd path/to/workshop_mcneel_2021
-    (base) conda env create -f environment.yml
-    (base) conda activate fab21
-
-<details><summary>Alternatively, create environment manually</summary>
-<p>
-
-The conda environment can also be manually created:
-
-    (base) conda create -n fab21 python=3.8 compas_fab>=0.20.1 --yes
-    (base) conda activate fab21
-
 </p>
 </details>
+</br/>
 
-**Mac**
+    (base) conda env create -f https://dfab.link/mcneel-2021.yml
 
-Also install `python.app` after activating the environment:
+### Add to Rhino
 
-    (fab21) conda install python.app
+    (base)  conda activate fab21
+    (fab21) python -m compas_rhino.install -v 7.0
+
+### Get the workshop files
+
+    (fab21) cd Documents
+    (fab21) git clone https://github.com/gramaziokohler/workshop_mcneel_2021
 
 ### Verify installation
 
@@ -91,16 +87,6 @@ Also install `python.app` after activating the environment:
 
     Yay! COMPAS is installed correctly!
 
-    COMPAS: 1.12.2
+    COMPAS: 1.13.2
     Python: 3.8.10 | packaged by conda-forge | (default, May 11 2021, 06:25:23) [MSC v.1916 64 bit (AMD64)]
     Extensions: ['compas-fab', 'compas-cgal', 'compas-rrc']
-
-### Install on Rhino
-
-    (fab21) python -m compas_rhino.install
-
-### Update installation
-
-To update your environment:
-
-    (fab21) conda env update -f environment.yml
