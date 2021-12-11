@@ -28,10 +28,10 @@ jobs:
       - name: install
         run: |
           conda env update -f https://dfab.link/mcneel-2021.yml
-    #   - name: install python.app (mac)
-    #     if: matrix.os == 'macos-latest'
-    #     run: |
-    #       conda install python.app --yes
+      - name: install python.app (mac)
+        if: matrix.os == 'macos-latest'
+        run: |
+          conda install python.app --yes
       - name: Verify imports
         run: |
           python -c "import compas; print(compas.__version__)"
