@@ -1,10 +1,10 @@
 import random
+
 import compas
-from compas.geometry import Cylinder
+from compas.artists import Artist
 from compas.datastructures import Mesh
+from compas.geometry import Cylinder
 from compas.utilities import flatten
-from compas_rhino.artists import MeshArtist
-from compas_rhino.artists import CylinderArtist
 
 mesh = Mesh.from_off(compas.get('tubemesh.off'))
 
@@ -23,10 +23,9 @@ facecolor = {}
 for face in strip:
     facecolor[face] = (255, 200, 200)
 
-artist = MeshArtist(mesh, layer='Tubemesh')
+artist = Artist(mesh, layer='Tubemesh')
 artist.clear_layer()
 artist.draw_faces(color=facecolor)
-# artist.draw_edges(color=edgecolor)
 
 for edge in edgecolor:
     o = mesh.edge_midpoint(*edge)
@@ -34,5 +33,5 @@ for edge in edgecolor:
     h = mesh.edge_length(*edge)
 
     cylinder = Cylinder([(o, n), 0.02], h)
-    artist = CylinderArtist(cylinder, color=(0, 255, 0), layer='Tubemesh')
-    artist.draw(show_vertices=False)
+    artist = Artist(cylinder, color=(0, 255, 0), layer='Tubemesh')
+    artist.draw()

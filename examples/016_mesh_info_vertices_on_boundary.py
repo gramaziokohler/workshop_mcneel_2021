@@ -1,12 +1,16 @@
 import compas
 from compas.datastructures import Mesh
-from compas_plotters import MeshPlotter
+from compas_plotters import Plotter
 
 mesh = Mesh.from_obj(compas.get('faces.obj'))
 
-plotter = MeshPlotter(mesh, figsize=(12, 7.5))
-plotter.draw_vertices(
-    facecolor={vertex: (255, 0, 0) for vertex in mesh.vertices_on_boundary()},
+plotter = Plotter(figsize=(12, 7.5))
+
+meshartist = plotter.add(mesh)
+meshartist.draw_vertices(
+    color={vertex: (1, 0, 0) for vertex in mesh.vertices_on_boundary()},
 )
-plotter.draw_faces()
+meshartist.draw_faces()
+
+plotter.zoom_extents()
 plotter.show()

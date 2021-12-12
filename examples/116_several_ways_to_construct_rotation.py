@@ -1,6 +1,7 @@
 """There are several ways to construct a `Rotation`.
 """
 import math
+
 from compas.geometry import Frame
 from compas.geometry import Rotation
 

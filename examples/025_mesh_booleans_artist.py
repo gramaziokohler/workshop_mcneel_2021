@@ -1,4 +1,4 @@
-from compas_rhino.artists import MeshArtist
+from compas.artists import Artist
 
 from compas.datastructures import Mesh
 from compas.geometry import Box
@@ -23,5 +23,5 @@ V, F = boolean_union_mesh_mesh(A, B)
 mesh = Mesh.from_vertices_and_faces(V, F)
 print(mesh.summary())
 
-artist = MeshArtist(mesh)
+artist = Artist(mesh)
 artist.draw_mesh()

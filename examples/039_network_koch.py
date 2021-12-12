@@ -1,9 +1,10 @@
 import math
-from compas.geometry import Point
-from compas.geometry import Vector
-from compas.geometry import Rotation
+
+from compas.artists import Artist
 from compas.datastructures import Network
-from compas_plotters import NetworkPlotter
+from compas.geometry import Point
+from compas.geometry import Rotation
+from compas.geometry import Vector
 
 lsys = "A-A++A-A-A-A++A-A++A-A++A-A-A-A++A-A-A-A++A-A-A-A++A-A++A-A++A-A-A-A++A-A++A-A++A-A-A-A++A-A++A-A++A-A-A-A++A-A-A-A++A-A-A-A++A-A++A-A++A-A-A-A++A"
 
@@ -31,7 +32,7 @@ def draw(network, point, vector, s, step, last_node=None):
 
 draw(network, pt, v, lsys, step)
 
-plotter = NetworkPlotter(network, figsize=(12, 7.5))
-plotter.draw_nodes(radius=0.1)
-plotter.draw_edges()
-plotter.show()
+artist = Artist(network, layer='network')
+artist.clear_layer()
+artist.draw_nodes()
+artist.draw_edges()

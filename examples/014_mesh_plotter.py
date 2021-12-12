@@ -4,7 +4,7 @@ from compas_plotters import Plotter
 
 mesh = Mesh.from_obj(compas.get('faces.obj'))
 
-plotter = Plotter(figsize=(12, 7.5))
+plotter = Plotter()
 
 meshartist = plotter.add(mesh)
 meshartist.draw_vertices()

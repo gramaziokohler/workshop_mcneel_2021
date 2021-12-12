@@ -1,7 +1,7 @@
 """Example: Create a rotation from and axis and an angle.
 """
-from compas.geometry import Vector
 from compas.geometry import Rotation
+from compas.geometry import Vector
 
 aav = Vector(-0.043, -0.254, 0.617)
 angle, axis = aav.unitized(), aav.length

@@ -3,8 +3,7 @@ system and view in Rhino.
 """
 from compas.geometry import Frame
 from compas.geometry import Box
-from compas_rhino.artists import FrameArtist
-from compas_rhino.artists import BoxArtist
+from compas.artists import Artist
 
 # Given: box in the world coordinate system
 frame = Frame([1, 0, 0], [-0.45, 0.1, 0.3], [1, 0, 0])
@@ -20,10 +19,10 @@ box_transformed = Box(box_frame_transformed, width, length, height)
 print("Box frame transformed:", box_transformed.frame)
 
 # create artists
-artist1 = FrameArtist(Frame.worldXY())
-artist2 = BoxArtist(box)
-artist3 = FrameArtist(F)
-artist4 = BoxArtist(box_transformed)
+artist1 = Artist(Frame.worldXY())
+artist2 = Artist(box)
+artist3 = Artist(F)
+artist4 = Artist(box_transformed)
 
 # draw
 artist1.draw()

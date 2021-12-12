@@ -1,10 +1,15 @@
 import compas
 from compas.datastructures import Mesh
-from compas_plotters import MeshPlotter
+from compas_plotters import Plotter
 
 mesh = Mesh.from_obj(compas.get('faces.obj'))
 
-plotter = MeshPlotter(mesh, figsize=(12, 7.5))
-plotter.draw_vertices(text={vertex: str(mesh.vertex_degree(vertex)) for vertex in mesh.vertices()}, radius=0.2)
-plotter.draw_faces()
+plotter = Plotter()
+
+meshartist = plotter.add(mesh, sizepolicy='absolute', vertexsize=30)
+meshartist.draw_vertices()
+meshartist.draw_vertexlabels(text={vertex: str(mesh.vertex_degree(vertex)) for vertex in mesh.vertices()})
+meshartist.draw_faces()
+
+plotter.zoom_extents()
 plotter.show()

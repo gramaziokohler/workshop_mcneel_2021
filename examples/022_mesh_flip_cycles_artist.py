@@ -1,11 +1,11 @@
 import compas
 from compas.datastructures import Mesh
-from compas_rhino.artists import MeshArtist
+from compas.artists import Artist
 
 mesh = Mesh.from_obj(compas.get('tubemesh.obj'))
 mesh.flip_cycles()
 
-artist = MeshArtist(mesh, layer='Tubemesh')
+artist = Artist(mesh, layer='Tubemesh')
 artist.clear_layer()
 artist.draw()
 artist.draw_vertexnormals()

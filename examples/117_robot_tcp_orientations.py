@@ -1,8 +1,8 @@
 """Example: Different Robot vendors use different conventions to describe TCP orientation."""
 
+from compas.geometry import Frame
 from compas.geometry import Point
 from compas.geometry import Vector
-from compas.geometry import Frame
 
 point = Point(0.0, 0.0, 63.0)
 xaxis = Vector(0.68, 0.68, 0.27)

@@ -1,7 +1,7 @@
 """Change-basis transformation.
 """
-from compas.geometry import Point
 from compas.geometry import Frame
+from compas.geometry import Point
 from compas.geometry import Transformation
 
 F1 = Frame.worldXY()

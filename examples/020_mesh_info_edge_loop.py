@@ -1,21 +1,25 @@
 import random
-import compas
+
 from compas.datastructures import Mesh
-from compas_plotters import MeshPlotter
+from compas_plotters import Plotter
 
-mesh = Mesh.from_obj(compas.get('quadmesh.obj'))
+plotter = Plotter(figsize=(8, 8))
 
-start = random.choice(list(mesh.edges()))
-edges = mesh.edge_loop(start)
+mesh = Mesh.from_meshgrid(dx=10, nx=10)
 
-edgecolor = {}
-for edge in edges:
-    edgecolor[edge] = (0, 255, 0)
+edge = random.choice(list(mesh.edges()))
+loop = mesh.edge_loop(edge)
 
-edgecolor[start] = (255, 0, 0)
+vertex_color = {
+    loop[0][0]: (1.0, 0.7, 0.7),
+    loop[0][1]: (1.0, 0.0, 0.0),
+}
 
-plotter = MeshPlotter(mesh, figsize=(12, 7.5))
-plotter.draw_vertices(radius=0.03)
-plotter.draw_faces()
-plotter.draw_edges(keys=edges, color=edgecolor, width=2.0)
+edge_width = {}
+for u, v in loop:
+    edge_width[u, v] = 5.0
+
+meshartist = plotter.add(mesh, sizepolicy='relative', edgewidth=edge_width, vertexcolor=vertex_color, vertexsize=10)
+
+plotter.zoom_extents()
 plotter.show()
