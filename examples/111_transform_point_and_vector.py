@@ -20,3 +20,4 @@ v.transform(R)
 # should not be the same!
 print(p)
 print(v)
+assert p != v
