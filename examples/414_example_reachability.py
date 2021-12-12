@@ -10,9 +10,9 @@ urdf_filename = compas_fab.get('universal_robot/ur_description/urdf/ur5.urdf')
 srdf_filename = compas_fab.get('universal_robot/ur5_moveit_config/config/ur5.srdf')
 
 
-jsonfile_in = os.path.join(os.path.dirname(__file__), "XXX_example_reachability_in.json")
-jsonfile_out = os.path.join(os.path.dirname(__file__), "XXX_example_reachability_out.json")
-tool_jsonfile = os.path.join(os.path.dirname(__file__), "XXX_example_reachability_tool.json")
+jsonfile_in = os.path.join(os.path.dirname(__file__), "414_example_reachability_in.json")
+jsonfile_out = os.path.join(os.path.dirname(__file__), "414_example_reachability_out.json")
+tool_jsonfile = os.path.join(os.path.dirname(__file__), "414_example_reachability_tool.json")
 tool = Tool.from_json(tool_jsonfile)
 
 frames_in = compas.json_load(jsonfile_in)
