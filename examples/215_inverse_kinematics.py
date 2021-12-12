@@ -12,5 +12,7 @@ model = RobotModel.from_urdf_file(loader.load_urdf('ur5.urdf'))
 
 f = Frame((0.417, 0.191, -0.005), (-0.000, 1.000, 0.00), (1.000, 0.000, 0.000))
 
-for jv in UR5Kinematics().inverse(f):
+solutions = UR5Kinematics().inverse(f)
+
+for jv in solutions:
     print(Configuration.from_revolute_values(jv))

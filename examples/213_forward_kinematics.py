@@ -11,12 +11,10 @@ model = RobotModel.from_urdf_file(loader.load_urdf('ur5.urdf'))
 print(model.get_base_link_name())
 print(model.get_end_effector_link_name())
 
-# Create joint state dictionary
-joint_names = model.get_configurable_joint_names()
-joint_values = [0.] * 6
-joint_state = dict(zip(joint_names, joint_values))
+# Create config
+config = model.zero_configuration()
 
 # Get FK for tip
-print (model.forward_kinematics(joint_state))
+print (model.forward_kinematics(config))
 # Get FK for base
-print (model.forward_kinematics(joint_state, link_name=model.get_base_link_name()))
+print (model.forward_kinematics(config, link_name=model.get_base_link_name()))
