@@ -26,7 +26,7 @@ for node in network.nodes():
 print(network.summary())
 
 # Serialize network to JSON and back
-filename = __file__ + '.json'
+filename = '034_network_serialization_complex_type.json'
 
 network.to_json(filename, pretty=True)
 print(network.summary())
