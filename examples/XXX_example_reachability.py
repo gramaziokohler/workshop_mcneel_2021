@@ -24,17 +24,8 @@ with AnalyticalPyBulletClient(connection_type='gui') as client:  # direct
     robot = client.load_robot(urdf_filename, [loader])
     client.load_semantics(robot, srdf_filename)
     robot.attach_tool(tool)
-
-    print(client.disabled_collisions)
-    print(type(client.disabled_collisions))
-    acm = robot.attached_tool.attached_collision_meshes[0]
-    print(acm.touch_links)
-    print(acm.collision_mesh.id)
-    # 'wrist_3_link' and 'attached_tool_link_collision_0
-    client.disabled_collisions.add(('ee_link', 'attached_tool_link_collision_0'))
-    client.disabled_collisions.add(('wrist_3_link', 'attached_tool_link_collision_0'))
-
-    print(client.disabled_collisions)
+    # this is not really nice.. 
+    client.disabled_collisions.add(('wrist_3_link', robot.attached_tool.attached_collision_meshes[0].collision_mesh.id))
 
     for frame in frames_in:
         frame_t0cf = robot.from_tcf_to_t0cf([frame])[0]
@@ -43,7 +34,7 @@ with AnalyticalPyBulletClient(connection_type='gui') as client:  # direct
         
         try:
             configurations = list(robot.iter_inverse_kinematics(frame_t0cf, options=options))
-            if configurations[ik_index] is None:
+            if configurations[ik_index]:
                 frames_out.append(frame)
         except InverseKinematicsError:
             pass
