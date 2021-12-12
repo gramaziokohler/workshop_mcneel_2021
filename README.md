@@ -6,7 +6,7 @@
 
 ![Flyer](images/spatial_robotic_assembly.jpg)
 
-👉 [Slides](https://docs.google.com/presentation/d/1XioagUYqCVWCgxudyw0m4pQa-cu9_5Pf7duuSE7PYMo) | [Overview](#overview) | [Examples](#examples) | [Requirements](#requirements) | [Installation](#installation)
+👉 [Slides](https://docs.google.com/presentation/d/1XioagUYqCVWCgxudyw0m4pQa-cu9_5Pf7duuSE7PYMo) | [Overview](#overview) | [Examples](examples/) | [Requirements](#requirements) | [Installation](#installation)
 
 ## Overview
 
@@ -35,14 +35,6 @@
 * RRC control primitives: blocking, non-blocking, and deferred blocking.
 * Overview of RRC instruction set: motion, IO control, custom instructions.
 * Remote control exercise with one of the robots of the Robotic Fabrication Lab at ETH Zurich.
-
-## Examples
-
-### Introduction
-
-* Topic
-  * [Sub-topic](examples/001_primitives.py)
-
 
 ## Requirements
 
