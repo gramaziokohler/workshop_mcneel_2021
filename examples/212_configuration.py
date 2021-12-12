@@ -26,3 +26,11 @@ ext_axes = Configuration([4], [Joint.PRISMATIC], ['ext_axis_1'])
 arm_joints = Configuration([math.pi], [Joint.REVOLUTE], ['joint_1'])
 full_cfg = ext_axes.merged(arm_joints)
 print(full_cfg)
+
+print()
+print('Access and update of configuration')
+print('External axis 1: {}'.format(full_cfg['ext_axis_1']))
+full_cfg['ext_axis_1'] = 3.005
+print(full_cfg)
+
+
