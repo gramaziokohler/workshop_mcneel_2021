@@ -36,11 +36,13 @@ jobs:
           python -m compas
       - name: Test code samples
         run: |
-          for file in ./examples/*.py
+          pushd examples
+          for file in *.py
           do
-          if [[ ${file} =~ ^./examples/[0-1]+ ]]; then
+          if [[ ${file} =~ ^[0-1]+ ]]; then
               echo Testing file=${file}
               echo ------------------------------------------------
-              cat .github/workflows/setup-test.py ${file} | python
+              cat ../.github/workflows/setup-test.py ${file} | python
           fi
           done
+          popd
