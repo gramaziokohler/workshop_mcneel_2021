@@ -20,6 +20,8 @@ class MockArtist(Artist):
         pass
     def draw_nodelabels(self, *args, **kwargs):
         pass
+    def draw_nodes(self, *args, **kwargs):
+        pass
     def draw_edges(self, *args, **kwargs):
         pass
     def clear_layer(self):

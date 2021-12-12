@@ -1,4 +1,5 @@
 import compas
+from compas.artists import Artist
 from compas.robots import GithubPackageMeshLoader
 from compas.robots import RobotModel
 
@@ -16,4 +17,10 @@ urdf = github.load_urdf('irb6640.urdf')
 # Create robot model from URDF
 model = RobotModel.from_urdf_file(urdf)
 
-print(model)
+# Also load geometry
+model.load_geometry(github)
+
+# Draw model
+artist = Artist(model)
+artist.draw_visual()
+artist.redraw()
