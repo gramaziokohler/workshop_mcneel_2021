@@ -391,7 +391,7 @@ robot_key = 'robot_{}'.format(str(ghenv.Component.InstanceGuid))
 
 if robot_key not in st:
     st[robot_key] = None
-    
+
 
 if load:
     ur5 = Robot(load_geometry=True)
@@ -3311,7 +3311,7 @@ class RobotVisualize(component):
                     frame = robot.forward_kinematics(configuration, options=dict(solver='model', link_name=acm.link_name))
                     T = Transformation.from_frame_to_frame(Frame.worldXY(), frame)
                     mesh = acm.collision_mesh.mesh.transformed(T)
-                    attached_meshes.append(MeshArtist(mesh).draw())
+                    attached_meshes.append(MeshArtist(mesh).draw_mesh())
 
         return (visual, collision, attached_meshes, frames, base_frame, ee_frame)
 </item>
@@ -3938,10 +3938,10 @@ from compas.robots import Configuration
 from compas_fab.backends.kinematics.solvers import UR5Kinematics
 
 if plane:
-    
+
     f = Frame(plane.Origin, plane.XAxis, plane.YAxis)
     ft0 = robot.from_tcf_to_t0cf([f])[0]
-    
+
     configurations = []
     for jv in UR5Kinematics().inverse(ft0):
         configurations.append(Configuration.from_revolute_values(jv))</item>
