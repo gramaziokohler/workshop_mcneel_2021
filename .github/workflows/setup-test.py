@@ -29,7 +29,7 @@ class MockArtist(Artist):
         pass
     def clear_layer(self):
         pass
-    def redraw(self):
+    def redraw(self, *args, **kwargs):
         pass
     def scale(self, *args, **kwargs):
         pass
