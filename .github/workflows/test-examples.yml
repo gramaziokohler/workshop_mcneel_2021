@@ -81,7 +81,7 @@ jobs:
           for file in *.py
           do
           if [[ ${file} =~ ^[3]+ ]]; then
-            if [[ ${file} != "302_ros_hello_world_listener.py" && ${file} != "304_ros_hello_world_talker.py"]]; then
+            if [[ ${file} != "302_ros_hello_world_listener.py" && ${file} != "304_ros_hello_world_talker.py" ]]; then
               echo Testing file=${file}
               echo ------------------------------------------------
               cat ../.github/workflows/setup-test.py ${file} | python
