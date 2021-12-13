@@ -33,6 +33,8 @@ class MockArtist(Artist):
         pass
     def scale(self, *args, **kwargs):
         pass
+    def update(self, *args, **kwargs):
+        pass
 
 Artist.register(compas.geometry.Box, MockArtist)
 Artist.register(compas.geometry.Frame, MockArtist)
