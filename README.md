@@ -50,7 +50,7 @@ Once installed, go to the `Add-in` tab, and install the latest version available
 
 We use `conda` to make sure we have clean, isolated environment for dependencies.
 
-<details><summary>First time using `conda`?</summary>
+<details><summary>First time using <code>conda</code>?</summary>
 <p>
 
 Make sure you run this at least once:
