@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Archive name="Root">
   <!--Grasshopper archive-->
   <!--Grasshopper and GH_IO.dll are copyrighted by Robert McNeel & Associates-->
@@ -264,8 +264,8 @@ class RobotVisualize(component):
                     cms = co.to_collision_meshes()
 
                     for cm in cms:
-                        if frame_id != '/world':
-                            raise NotImplementedException('Only world-referenced collision meshes are supported')
+                        # if frame_id != '/world':
+                        #     raise NotImplementedException('Only world-referenced collision meshes are supported')
 
                         if cm.frame != Frame.worldXY():
                             t = Transformation.from_frame(cm.frame)
@@ -280,6 +280,9 @@ class RobotVisualize(component):
             collision_meshes = st.get(scene_key_co, None)
 
             for aco in scene.robot_state.attached_collision_objects:
+                # Noetic compat fix
+                if 'pose' in aco.object:
+                    del aco.object['pose']
                 for acm in aco.to_attached_collision_meshes():
                     frame_id = aco.object['header']['frame_id']
                     frame = robot.forward_kinematics(configuration, options=dict(link=frame_id))
