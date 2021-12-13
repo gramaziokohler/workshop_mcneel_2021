@@ -63,7 +63,7 @@ jobs:
 
       - name: Set up docker containers
         run: |
-          docker-compose -f "docker/moveit/docker-compose.yml" up -d --build
+          docker-compose -f "docker/moveit-kinetic/docker-compose.yml" up -d --build
           docker ps -a
 
       - name: Install
@@ -91,4 +91,4 @@ jobs:
           popd
       - name: Tear down docker containers
         run: |
-          docker-compose -f "docker/moveit/docker-compose.yml" down
+          docker-compose -f "docker/moveit-kinetic/docker-compose.yml" down

@@ -1,7 +1,7 @@
 version: '2'
 services:
   moveit-demo:
-    image: gramaziokohler/ros-kinetic-moveit:20.12
+    image: gramaziokohler/ros-kinetic-moveit:21.12
     container_name: moveit-demo
     environment:
       - ROS_HOSTNAME=moveit-demo
@@ -19,7 +19,7 @@ services:
       - use_rviz:=false
 
   ros-core:
-    image: gramaziokohler/ros-kinetic-moveit:20.12
+    image: gramaziokohler/ros-kinetic-moveit:21.12
     container_name: ros-core
     ports:
       - "11311:11311"
@@ -27,7 +27,7 @@ services:
       - roscore
 
   ros-bridge:
-    image: gramaziokohler/ros-kinetic-moveit:20.12
+    image: gramaziokohler/ros-kinetic-moveit:21.12
     container_name: ros-bridge
     environment:
       - "ROS_HOSTNAME=ros-bridge"
@@ -44,7 +44,7 @@ services:
       - unregister_timeout:=28800      # This horribly long timeout of 8 hours is to workaround this issue: https://github.com/RobotWebTools/rosbridge_suite/issues/138
 
   ros-fileserver:
-    image: gramaziokohler/ros-kinetic-moveit:20.12
+    image: gramaziokohler/ros-kinetic-moveit:21.12
     container_name: ros-fileserver
     environment:
       - ROS_HOSTNAME=ros-fileserver

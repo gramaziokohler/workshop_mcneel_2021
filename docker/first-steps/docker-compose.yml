@@ -1,7 +1,7 @@
 version: '2'
 services:
   ros-core:
-    image: gramaziokohler/ros-noetic-base
+    image: gramaziokohler/ros-kinetic-moveit:21.12
     container_name: ros-core
     ports:
       - "11311:11311"
@@ -9,7 +9,7 @@ services:
       - roscore
 
   ros-bridge:
-    image: gramaziokohler/ros-noetic-base
+    image: gramaziokohler/ros-kinetic-moveit:21.12
     container_name: ros-bridge
     environment:
       - "ROS_HOSTNAME=ros-bridge"

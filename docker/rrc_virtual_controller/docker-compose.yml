@@ -1,7 +1,7 @@
 version: '2'
 services:
   abb-driver:
-    image: gramaziokohler/ros-noetic-dfab:21.12
+    image: gramaziokohler/ros-kinetic-dfab:21.12
     container_name: abb-driver
     environment:
       - ROS_HOSTNAME=abb-driver
@@ -19,7 +19,7 @@ services:
       - namespace:=rob1
 
   moveit-demo:
-    image: gramaziokohler/ros-noetic-dfab:21.12
+    image: gramaziokohler/ros-kinetic-dfab:21.12
     container_name: moveit-demo
     environment:
       - ROS_HOSTNAME=moveit-demo
@@ -42,7 +42,7 @@ services:
       - use_rviz:=false
 
   ros-core:
-    image: gramaziokohler/ros-noetic-dfab:21.12
+    image: gramaziokohler/ros-kinetic-dfab:21.12
     container_name: ros-core
     ports:
       - "11311:11311"
@@ -50,7 +50,7 @@ services:
       - roscore
 
   ros-bridge:
-    image: gramaziokohler/ros-noetic-dfab:21.12
+    image: gramaziokohler/ros-kinetic-dfab:21.12
     container_name: ros-bridge
     environment:
       - "ROS_HOSTNAME=ros-bridge"
@@ -67,7 +67,7 @@ services:
       - unregister_timeout:=28800      # This horribly long timeout of 8 hours is to workaround this issue: https://github.com/RobotWebTools/rosbridge_suite/issues/138
 
   ros-fileserver:
-    image: gramaziokohler/ros-noetic-dfab:21.12
+    image: gramaziokohler/ros-kinetic-dfab:21.12
     container_name: ros-fileserver
     environment:
       - ROS_HOSTNAME=ros-fileserver
