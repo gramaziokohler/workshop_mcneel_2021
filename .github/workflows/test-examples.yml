@@ -10,7 +10,7 @@ defaults:
     shell: bash -l {0}
 
 jobs:
-  test-install:
+  test-examples-without-ros:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -25,7 +25,7 @@ jobs:
           channels: conda-forge
           python-version: 3.8
 
-      - name: install
+      - name: Install
         run: |
           conda env update -f https://dfab.link/mcneel-2021.yml
       - name: Verify imports
@@ -48,3 +48,47 @@ jobs:
           fi
           done
           popd
+
+  test-examples-with-ros:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest"
+          activate-environment: fab21
+          channels: conda-forge
+          python-version: 3.8
+
+      - name: Set up docker containers
+        run: |
+          docker-compose -f "docker/moveit/docker-compose.yml" up -d --build
+          docker ps -a
+
+      - name: Install
+        run: |
+          conda env update -f https://dfab.link/mcneel-2021.yml
+      - name: Verify imports
+        run: |
+          python -c "import compas; print(compas.__version__)"
+          python -c "import compas_fab; print(compas_fab.__version__)"
+          python -c "import compas_rrc; print(compas_rrc.__version__)"
+          python -m compas
+      - name: Test code samples
+        run: |
+          pushd examples
+          for file in *.py
+          do
+          if [[ ${file} =~ ^[3]+ ]]; then
+            if [[ ${file} != "302_ros_hello_world_listener.py" && ${file} != "304_ros_hello_world_talker.py"]]; then
+              echo Testing file=${file}
+              echo ------------------------------------------------
+              cat ../.github/workflows/setup-test.py ${file} | python
+            fi
+          fi
+          done
+          popd
+      - name: Tear down docker containers
+        run: |
+          docker-compose -f "docker/moveit/docker-compose.yml" down
