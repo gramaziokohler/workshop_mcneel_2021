@@ -31,6 +31,8 @@ class MockArtist(Artist):
         pass
     def redraw(self):
         pass
+    def scale(self, *args, **kwargs):
+        pass
 
 Artist.register(compas.geometry.Box, MockArtist)
 Artist.register(compas.geometry.Frame, MockArtist)
