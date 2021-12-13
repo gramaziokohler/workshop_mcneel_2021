@@ -11,7 +11,7 @@ if __name__ == '__main__':
     print('Connected.')
 
     # Set start values
-    robot_joints, external_axes = [90, 90, 0, 0],  []
+    robot_joints, external_axes = [0, 0, 0, 0, 0, 0],  []
 
     # Move robot to start position
     done = abb.send_and_wait(rrc.MoveToJoints(robot_joints, external_axes, 1000, rrc.Zone.FINE))
