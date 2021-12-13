@@ -39,10 +39,12 @@ jobs:
           pushd examples
           for file in *.py
           do
-          if [[ ${file} =~ ^[0-1]+ ]]; then
+          if [[ ${file} =~ ^[0-2]+ ]]; then
+            if [[ ${file} != "208_robot_from_ros.py" ]]; then
               echo Testing file=${file}
               echo ------------------------------------------------
               cat ../.github/workflows/setup-test.py ${file} | python
+            fi
           fi
           done
           popd
