@@ -1,5 +1,7 @@
+from helpers import draw_directed_edges
+
+from compas.artists import Artist
 from compas.datastructures import Network
-from compas_plotters import NetworkPlotter
 
 n = Network()
 
@@ -36,8 +38,9 @@ def layout(node, y=1):
 root = 1
 layout(root)
 
-plotter = NetworkPlotter(n, figsize=(12, 7.5))
-plotter.draw_nodes(
-    text=dict(zip(n.nodes(), n.nodes())))
-plotter.draw_edges()
-plotter.show()
+artist = Artist(n, layer='network')
+artist.clear_layer()
+artist.draw_nodelabels(text='key')
+draw_directed_edges(artist)
+artist.redraw()
+

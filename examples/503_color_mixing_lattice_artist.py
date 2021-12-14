@@ -1,5 +1,7 @@
+from helpers import draw_directed_edges
+
+from compas.artists import Artist
 from compas.datastructures import Network
-from compas_plotters import NetworkPlotter
 
 network = Network()
 
@@ -37,11 +39,11 @@ print(network.summary())
 node_color = network.nodes_attribute('color')
 labels = network.nodes_attribute('text')
 
-plotter = NetworkPlotter(network, figsize=(12, 7.5))
-plotter.defaults['node.radius'] = 1.5
-plotter.draw_nodes(
+artist = Artist(network, layer='network')
+artist.clear_layer()
+artist.draw_nodelabels(
     text=dict(zip(network.nodes(), labels)),
-    textcolor={s: (1, 1, 1), b: (1, 1, 1), p: (1, 1, 1)},
-    facecolor=dict(zip(network.nodes(), node_color)))
-plotter.draw_edges()
-plotter.show()
+    color=dict(zip(network.nodes(), node_color)))
+draw_directed_edges(artist)
+artist.redraw()
+
