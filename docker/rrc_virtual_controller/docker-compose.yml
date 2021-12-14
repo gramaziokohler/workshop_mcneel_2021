@@ -30,14 +30,12 @@ services:
       # - DISPLAY=gui:0.0
     depends_on:
       - ros-core
-      # To use the web-based GUI, uncomment the following line
-      # - gui
+    volumes:
+      - ./scripts:/root/catkin_ws/scripts
     command:
       - roslaunch
       - --wait
-      # To change the robot, select the corresponding package name here, eg. `ur10e_moveit_config`
-      - abb_irb4600_40_255_moveit_config
-      - demo.launch
+      - /root/catkin_ws/scripts/demo.launch
       # To launch the RVIZ GUI, change the following to true and activate one of the two GUI options above
       - use_rviz:=false
 
