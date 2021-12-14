@@ -41,6 +41,8 @@ layout(root)
 artist = Artist(n, layer='network')
 artist.clear_layer()
 artist.draw_nodelabels(text='key')
-draw_directed_edges(artist)
+
+if __file__ != '<stdin>':
+    draw_directed_edges(artist, n)
 artist.redraw()
 

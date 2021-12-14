@@ -44,6 +44,7 @@ artist.clear_layer()
 artist.draw_nodelabels(
     text=dict(zip(network.nodes(), labels)),
     color=dict(zip(network.nodes(), node_color)))
-draw_directed_edges(artist)
-artist.redraw()
 
+if __file__ != '<stdin>':
+    draw_directed_edges(artist, network)
+artist.redraw()

@@ -239,9 +239,9 @@ def get_input(prompt='> ', end='\n'):
     return __input_context['buffer']
 
 
-def draw_directed_edges(artist, edges=None, color=None):
+def draw_directed_edges(artist, network, edges=None, color=None):
     node_xyz = artist.node_xyz
-    edges = edges or list(artist.network.edges())
+    edges = edges or list(network.edges())
     edge_color = COLORDICT(color, edges, default=artist.edge_color)
     lines = []
     for edge in edges:
